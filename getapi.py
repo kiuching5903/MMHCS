@@ -3,8 +3,8 @@ import os
 import time
 import pandas as pd
 
-# Đặt thư mục làm việc hiện tại
-os.chdir('D:/BTL/BTL Python/test')
+# Thư mục chứa các file APK
+os.chdir('../FileAPK')
 
 # Hàm trích xuất cuộc gọi API từ một tệp APK
 def EXTRACT_API_CALLS(apk):
@@ -20,7 +20,7 @@ def EXTRACT_API_CALLS(apk):
     return list(set(res))
 
 # Đọc danh sách API từ tệp Excel
-filename = "D:/BTL/BTL Python/getapi/apilist.xlsx"
+filename = "../apilist.xlsx"
 df = pd.read_excel(filename)
 
 # Kiểm tra dữ liệu đã được đọc chính xác chưa
@@ -47,28 +47,6 @@ for apk in os.listdir():
         print(f"Processed APK: {apk}, Elapsed Time: {time.time() - start:.2f} seconds")
 
 # Lưu kết quả vào tệp CSV
-output_csv = "D:/BTL/BTL Python/getapi/apioutput.csv"
+output_csv = "../apioutput.csv"
 result_df.to_csv(output_csv, sep=",", index=True)
 print(f"Results saved to: {output_csv}")
-
-
-
-            
-
-    # file2 = open(file_name + 'out.csv','w')
-    # file3 = open(file_name + '.csv', 'r')
-
-    # lines = file3.readlines(100000)  # 10만 줄을 한 번에 읽음 
-    #                                 # user가 설정할 수 있음
-    # lines = list(set(lines))
-    # lines.sort()
-
-    # for line in lines:
-    #     file2.write(line)
-    
-    # file2.close()
-    # file3.close()
-    # os.remove(file_name + '.csv')
-    # shutil.move(file_name + 'out.csv', '../apiout/'+file_name + '.csv')
-    # end = time.time()
-    # print(f"{end - start:.5f} sec")
